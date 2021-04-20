@@ -34,9 +34,14 @@ jobs:
 
 
 
-    - name: copy file to folder
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+    - name: copy file via ssh key
+      uses: appleboy/scp-action@master
+      env:
+        HOST: khophi.com
+        USERNAME: khophi
+        PORT: 22
+        KEY: ${{ secrets.forSSH }}
       with:
-       BRANCH: gh-pages
-       GITHUB_TOKEN: ${{ secrets.forSSH }}
-       FOLDER: deploy_dist/TestApplication
+        source: "./Testapplication/dist/TestApplication/"
+        target: "/home/user/domain.com/pwa/"
+        strip_components: 3 # this is important
