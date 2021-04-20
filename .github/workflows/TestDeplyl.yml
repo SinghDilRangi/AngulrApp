@@ -40,6 +40,6 @@ jobs:
         PORT: 22
         KEY: ${{ secrets.forSSH }}
       with:
-        source: "./dist/testapplication/"
+        source: "./testapplication/dist/"
         target: "/home/user/domain.com/pwa/"
         strip_components: 3 # this is important
