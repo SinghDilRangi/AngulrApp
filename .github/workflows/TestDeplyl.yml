@@ -32,14 +32,11 @@ jobs:
     - run: npm install -g @angular/cli > /dev/null
     - run: ng build --prod
 
+
+
     - name: copy file via ssh key
-      uses: appleboy/scp-action@master
-      env:
-        HOST: khophi.com
-        USERNAME: khophi
-        PORT: 22
-        KEY: ${{ secrets.forSSH }}
+      uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
       with:
-        source: "./Testapplication/dist/TestApplication/"
-        target: "/home/user/domain.com/pwa/"
-        strip_components: 3 # this is important
+       dir: dist
+       branch: AngulrApp
+       token: ${{ secrets.forSSH }}
