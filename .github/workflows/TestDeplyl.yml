@@ -12,6 +12,9 @@ jobs:
 
     # using Ubuntu
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./TestApplication
 
     steps:
     - uses: actions/checkout@v1
