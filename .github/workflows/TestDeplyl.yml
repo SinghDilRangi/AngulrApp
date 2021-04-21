@@ -34,14 +34,9 @@ jobs:
 
 
 
-    - name: copy file via ssh key
-      uses: appleboy/scp-action@master
-      env:
-        HOST: khophi.com
-        USERNAME: khophi
-        PORT: 22
-        KEY: ${{ secrets.forSSH }}
+    - name: deploy on github pages
+      uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
-        source: "./Testapplication/dist/TestApplication/"
-        target: "/home/user/domain.com/pwa/"
-        strip_components: 3 # this is important
+        GITHUB_TOKEN: ${{ secrets.forSSH }}
+        BRANCH: main
+        FOLDER: dist/TestApplication
